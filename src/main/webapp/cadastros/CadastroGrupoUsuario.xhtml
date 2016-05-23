@@ -112,6 +112,12 @@
 							</p:column>
 
 						</p:dataTable>
+						<p:confirmDialog global="true">
+							<p:commandButton value="Sim" styleClass="ui-confirmdialog-yes"
+								type="button" icon="ui-icon-check" />
+							<p:commandButton value="Não" styleClass="ui-confirmdialog-no"
+								type="button" icon="ui-icon-close" />
+						</p:confirmDialog>
 
 						<p:dialog header="Cadastro Grupo" widgetVar="edicaoGrupoDialog"
 							id="grupo-dialog" resizable="false" modal="true"

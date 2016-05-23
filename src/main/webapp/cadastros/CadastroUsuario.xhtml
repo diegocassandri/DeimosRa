@@ -12,8 +12,8 @@
 	<ui:define name="titulo">Cadastro de Usuário</ui:define>
 
 	<ui:define name="corpo">
-		<div id="page-wrapper" >
-			<div class="container-fluid" style="min-height:592px">
+		<div id="page-wrapper">
+			<div class="container-fluid" style="min-height: 592px">
 				<!-- Page Heading -->
 				<div class="row">
 					<div class="col-lg-12">
@@ -123,7 +123,8 @@
 
 							<p:defaultCommand target="salvar-button" scope="usuario-dialog" />
 
-							<h:panelGrid columns="2" id="painel-dialog" cellpadding="2" cellspacing="2">
+							<h:panelGrid columns="2" id="painel-dialog" cellpadding="2"
+								cellspacing="2">
 								<p:outputLabel value="Código" for="codigo" />
 								<p:inputText id="codigo" size="20" maxlength="20"
 									value="#{cadastroUsuarioBean.usuarioEdicao.codigo}"
@@ -164,6 +165,12 @@
 									update="msgs-dialog painel-dialog"
 									oncomplete="if (!args.validationFailed) PF('edicaoUsuarioDialog').hide()" />
 							</h:panelGrid>
+							<p:confirmDialog global="true">
+								<p:commandButton value="Sim" styleClass="ui-confirmdialog-yes"
+									type="button" icon="ui-icon-check" />
+								<p:commandButton value="Não" styleClass="ui-confirmdialog-no"
+									type="button" icon="ui-icon-close" />
+							</p:confirmDialog>
 						</p:dialog>
 
 						<p:dialog header="Associar Grupos" widgetVar="associaGruposDialog"
