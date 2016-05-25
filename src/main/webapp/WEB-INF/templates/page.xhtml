@@ -17,18 +17,22 @@
 	<title>DeimosRa | ERP</title>
 	<!-- Serve para o javaScript FUNCIONAR! -->
 	<h:outputScript>$ = jQuery;</h:outputScript>
-	<h:outputStylesheet library="algaworks" name="styles/layout.css" />
 	<h:outputStylesheet library="css" name="bootstrap.min.css" />
 	<h:outputStylesheet library="css" name="sb-admin.css" />
 	<h:outputStylesheet library="font" name="css/font-awesome.min.css" />
 	<link rel="stylesheet"
 		href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
-
-
 </h:head>
 
 <h:body>
-
+	<p:ajaxStatus styleClass="ajax-status">
+		<f:facet name="start">
+			<h:graphicImage library="img" name="loading.gif" />
+		</f:facet>
+		<f:facet name="complete">
+			<h:outputText value="" />
+		</f:facet>
+	</p:ajaxStatus>
 	<div id="wrapper">
 		<!-- Navigation -->
 		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -124,8 +128,9 @@
 						<li><a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
 						</li>
 						<li class="divider"></li>
-						<li><a href="/System/j_spring_security_logout?faces-redirect=true"><i class="fa fa-fw fa-power-off"></i> Log
-								Out</a></li>
+						<li><a
+							href="/System/j_spring_security_logout?faces-redirect=true"><i
+								class="fa fa-fw fa-power-off"></i> Log Out</a></li>
 					</ul></li>
 			</ul>
 
@@ -137,8 +142,6 @@
 
 			</ui:insert>
 		</div>
-
-
 
 	</div>
 

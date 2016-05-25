@@ -225,3 +225,28 @@ ul.alert-dropdown {
 .panel-yellow > a:hover {
     color: #df8a13;
 }
+
+.ajax-status {
+	position: fixed;
+	top: 110px;
+	right: 10px;
+	width: 35px;
+	height: 35px
+}
+
+.ui-widget {
+	font-size: 12px !important;
+}
+
+.ui-layout-north {
+	z-index: 3 !important;
+	overflow: visible !important;
+}
+
+.ui-layout-north .ui-layout-unit-content {
+	overflow: visible !important;
+}
+
+.ui-menu, .ui-menubar, .ui-menu-child {
+	min-width: 180px !important;
+}

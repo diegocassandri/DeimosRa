@@ -30,7 +30,6 @@
 					</div>
 				</div>
 				<p:panel header="Consulta de Lançamentos" style="margin-top:10px">
-
 					<h:form id="frm">
 						<p:messages showDetail="false" showSummary="true"
 							autoUpdate="true" />
@@ -38,7 +37,7 @@
 						<p:dataTable value="#{consultaLancamentosBean.lancamentos}"
 							var="lancamento" border="1" cellspacing="0" cellpadding="2"
 							paginator="true" rows="5" paginatorPosition="bottom"
-							reflow="true">
+							reflow="true" styleClass="table table-condensed">
 							<p:column headerText="Pessoa" sortBy="#{lancamento.pessoa.nome}">
 								<h:outputText value="#{lancamento.pessoa.nome}" />
 							</p:column>
@@ -86,5 +85,4 @@
 			</div>
 		</div>
 	</ui:define>
-
 </ui:composition>

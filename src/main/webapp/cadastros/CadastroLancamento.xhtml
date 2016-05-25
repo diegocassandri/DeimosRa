@@ -14,8 +14,9 @@
 	<ui:define name="titulo">Cadastro de lançamento</ui:define>
 
 	<ui:define name="corpo">
+
 		<div id="page-wrapper">
-			<div class="container-fluid">
+			<div class="container-fluid" style="min-height: 590px">
 				<!-- Page Heading -->
 				<div class="row">
 					<div class="col-lg-12">
@@ -30,13 +31,10 @@
 						</ol>
 					</div>
 				</div>
+
+				<p:messages showDetail="false" showSummary="true" autoUpdate="true" />
 				<p:panel header="Cadastro de lançamento" style="margin-top:10px">
-
 					<h:form id="frm">
-						<p:messages showDetail="false" showSummary="true"
-							autoUpdate="true" />
-
-
 						<div class="ui-fluid">
 							<p:panelGrid columns="2"
 								columnClasses="ui-grid-col-2,ui-grid-col-2" layout="grid"
@@ -91,13 +89,14 @@
 								<h:outputLabel />
 								<p:commandButton value="Salvar"
 									action="#{cadastroLancamentoBean.salvar}" icon="ui-icon-disk"
-									update="@form" />
+									update="@form" styleClass="btn btn-primary" />
 							</p:panelGrid>
 						</div>
 					</h:form>
 				</p:panel>
 			</div>
 		</div>
+
 	</ui:define>
 
 </ui:composition>
