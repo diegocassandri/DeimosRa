@@ -122,49 +122,57 @@
 							<p:messages id="msgs-dialog" />
 
 							<p:defaultCommand target="salvar-button" scope="usuario-dialog" />
+							<div class="ui-fluid">
+								<p:panelGrid columns="2" columnClasses="ui-grid-col-4,ui-grid-col-8"
+									layout="grid" styleClass="ui-panelgrid-blank"
+									id="painel-dialog">
 
-							<h:panelGrid columns="2" id="painel-dialog" cellpadding="2"
-								cellspacing="2">
-								<p:outputLabel value="Código" for="codigo" />
-								<p:inputText id="codigo" size="20" maxlength="20"
-									value="#{cadastroUsuarioBean.usuarioEdicao.codigo}"
-									readonly="true" />
 
-								<p:outputLabel value="Usuário" for="nome" />
-								<p:inputText id="nome"
-									value="#{cadastroUsuarioBean.usuarioEdicao.usuario}" />
+									<p:outputLabel value="Código" for="codigo" />
+									<p:inputText id="codigo" size="20" maxlength="20"
+										value="#{cadastroUsuarioBean.usuarioEdicao.codigo}"
+										readonly="true" styleClass="form-control input-md" />
 
-								<p:outputLabel value="Senha" for="senha" />
-								<p:password id="senha" feedback="true" inline="true"
-									redisplay="true" promptLabel="Digite uma senha segura"
-									goodLabel="Boa" weakLabel="Razoável" strongLabel="Excelente"
-									value="#{cadastroUsuarioBean.usuarioEdicao.senha}" />
+									<p:outputLabel value="Usuário" for="nome" />
+									<p:inputText id="nome" styleClass="form-control input-sm"
+										value="#{cadastroUsuarioBean.usuarioEdicao.usuario}" />
 
-								<p:outputLabel value="Mudar Senha" for="mudarSenha" />
+									<p:outputLabel value="Senha" for="senha" />
+									<p:password id="senha" feedback="true" inline="true"
+										styleClass="form-control input-md" redisplay="true"
+										promptLabel="Digite uma senha segura" goodLabel="Boa"
+										weakLabel="Razoável" strongLabel="Excelente"
+										value="#{cadastroUsuarioBean.usuarioEdicao.senha}" />
 
-								<p:selectBooleanButton id="mudarSenha"
-									value="#{cadastroUsuarioBean.usuarioEdicao.mudarSenha}"
-									onLabel="Sim" offLabel="Não" style="width:60px" />
+									<p:outputLabel value="Mudar Senha" for="mudarSenha" />
 
-								<p:outputLabel value="Nome Completo" for="nomeCompleto" />
-								<p:inputText id="nomeCompleto" size="20" maxlength="100"
-									value="#{cadastroUsuarioBean.usuarioEdicao.nomeCompleto}" />
+									<p:selectBooleanButton id="mudarSenha"
+										value="#{cadastroUsuarioBean.usuarioEdicao.mudarSenha}"
+										onLabel="Sim" offLabel="Não" style="width:60px" />
 
-								<p:outputLabel value="Email" for="email" />
-								<p:inputText id="email"
-									value="#{cadastroUsuarioBean.usuarioEdicao.email}" />
+									<p:outputLabel value="Nome Completo" for="nomeCompleto" />
+									<p:inputText id="nomeCompleto" size="20" maxlength="100"
+										styleClass="form-control input-md"
+										value="#{cadastroUsuarioBean.usuarioEdicao.nomeCompleto}" />
 
-								<p:outputLabel value="Status" for="status" />
-								<p:selectOneMenu id="status"
-									value="#{cadastroUsuarioBean.usuarioEdicao.status}">
-									<f:selectItems value="#{cadastroUsuarioBean.statusList}" />
-								</p:selectOneMenu>
+									<p:outputLabel value="Email" for="email" />
+									<p:inputText id="email" styleClass="form-control input-md"
+										size="60" value="#{cadastroUsuarioBean.usuarioEdicao.email}" />
 
-								<p:commandButton value="Salvar" id="salvar-button"
-									action="#{cadastroUsuarioBean.salvar}" process="usuario-dialog"
-									update="msgs-dialog painel-dialog"
-									oncomplete="if (!args.validationFailed) PF('edicaoUsuarioDialog').hide()" />
-							</h:panelGrid>
+									<p:outputLabel value="Status" for="status" />
+									<p:selectOneMenu id="status"
+										value="#{cadastroUsuarioBean.usuarioEdicao.status}">
+										<f:selectItems value="#{cadastroUsuarioBean.statusList}" />
+									</p:selectOneMenu>
+
+									<p:commandButton value="Salvar" id="salvar-button"
+										action="#{cadastroUsuarioBean.salvar}"
+										process="usuario-dialog" update="msgs-dialog painel-dialog"
+										oncomplete="if (!args.validationFailed) PF('edicaoUsuarioDialog').hide()" />
+										
+								</p:panelGrid>
+							</div>
+
 							<p:confirmDialog global="true">
 								<p:commandButton value="Sim" styleClass="ui-confirmdialog-yes"
 									type="button" icon="ui-icon-check" />
@@ -191,6 +199,7 @@
 								action="#{cadastroUsuarioBean.salvaListaGrupos}"
 								process="associaGrupos-Dialog" update="msgs-associa"
 								oncomplete="if (!args.validationFailed) PF('associaGruposDialog').hide()" />
+								
 						</p:dialog>
 					</h:form>
 				</p:panel>

@@ -26,7 +26,10 @@ public class CadastroEstados  implements Serializable{
 
 	@Transactional
 	public void salvar(Estado estado) throws NegocioException {
-	
+		if (estados.pesquisaPorNome(estado)&& (estado.getCodigo() == null || estado.getCodigo()==0)){
+			throw new NegocioException(
+					"Já existe um cadastro com este nome de Estado: "+estado.getNome());
+		}
 		this.estados.adicionar(estado);
 	}
 	

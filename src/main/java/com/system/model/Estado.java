@@ -25,7 +25,7 @@ public class Estado implements Serializable {
 	private Long codigo;
 	
 	@NotEmpty
-	@Column(nullable = false, length = 50)
+	@Column(nullable = false, length = 50,unique=true)
 	private String nome;
 	
 	@NotEmpty

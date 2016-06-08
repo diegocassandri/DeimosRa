@@ -14,7 +14,7 @@
 	<meta name="description" content="" />
 	<meta name="author" content="" />
 
-	<title>DeimosRa | ERP</title>
+	<title> <ui:insert name="titulo"/> </title>
 	<!-- Serve para o javaScript FUNCIONAR! -->
 	<h:outputScript>$ = jQuery;</h:outputScript>
 	<h:outputStylesheet library="css" name="bootstrap.min.css" />
@@ -121,8 +121,8 @@
 					data-toggle="dropdown"><i class="fa fa-user"></i>
 						#{seguranca.nomeUsuario}! <b class="caret"></b></a>
 					<ul class="dropdown-menu">
-						<li><a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
-						</li>
+						<li><a href="/System/cadastros/AlterarSenha.xhtml"><i
+								class="fa fa-fw fa-user"></i> Alterar Senha</a></li>
 						<li><a href="#"><i class="fa fa-fw fa-envelope"></i>
 								Inbox</a></li>
 						<li><a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
@@ -150,6 +150,9 @@
 
 	<!-- Bootstrap Core JavaScript -->
 	<h:outputScript target="body" library="js" name="bootstrap.min.js" />
+
+
+
 
 </h:body>
 

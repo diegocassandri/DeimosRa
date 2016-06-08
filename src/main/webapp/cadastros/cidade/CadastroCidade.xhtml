@@ -29,18 +29,6 @@
 					</div>
 				</div>
 
-				<!-- <div class="row">
-					<div class="col-lg-3">
-
-						<form role="form">
-							<div class="form-group">
-								<label>Text Input with Placeholder</label> <input
-									class="form-control" placeholder="Enter text" />
-							</div>
-						</form>
-					</div>
-				</div>  -->
-
 				<h:form id="frmCadastro" style="margin-top:10px">
 					<p:panel header="Cadastro de Cidades" style="margin-top:10px">
 						<p:messages id="msgs" />
@@ -122,45 +110,45 @@
 				</h:form>
 
 				<p:dialog header="Cadastro Cidade" widgetVar="edicaoCidadeDialog"
-					id="cidade-dialog" resizable="false" modal="true"
+					id="cidade-dialog" resizable="true" modal="true"
 					appendTo="@(body)">
-					<h:form id="frmCidade">
-						<div class="ui-fluid">
-							<p:messages id="msgs-dialog" />
-							<p:defaultCommand target="salvar-button" scope="cidade-dialog" />
+					<h:form id="frmCidade" class="form-horizontal">
 
-							<p:panelGrid columns="2"
-								columnClasses="ui-grid-col-4,ui-grid-col-12" layout="grid"
-								styleClass="ui-panelgrid-blank" id="painel-dialog">
+						<p:messages id="msgs-dialog" />
+						<p:defaultCommand target="salvar-button" scope="cidade-dialog" />
 
-								<p:outputLabel value="Código" for="codigo" />
-								<p:inputText id="codigo" size="7" maxlength="10"
-									value="#{cadastroCidadeBean.cidadeEdicao.codigo}"
-									readonly="true" />
+						<p:panelGrid columns="2"
+							columnClasses="ui-grid-col-4,ui-grid-col-8" layout="grid"
+							styleClass="ui-panelgrid-blank" id="painel-dialog">
 
-								<p:outputLabel value="Nome" for="nome" />
-								<p:inputText id="nome" size="20" maxlength="50"
-									value="#{cadastroCidadeBean.cidadeEdicao.nome}" />
+							<p:outputLabel value="Código" for="codigo" />
+							<p:inputText id="codigo" size="7" maxlength="10"
+								value="#{cadastroCidadeBean.cidadeEdicao.codigo}"
+								readonly="true" styleClass="form-control input-md" />
 
-								<p:outputLabel value="Estado:" for="estado" />
-								<p:selectOneMenu filter="true"
-									value="#{cadastroCidadeBean.cidadeEdicao.estado}"
-									converter="omnifaces.SelectItemsConverter" required="true"
-									requiredMessage="O Campo Estado é obrigatório" id="estado">
-									<f:selectItem noSelectionOption="true"
-										itemLabel="Selecione um estado" />
-									<f:selectItems value="#{cadastroCidadeBean.todosEstados}"
-										var="estado" itemValue="#{estado}"
-										itemLabel="#{estado.nome} - #{estado.sigla}" />
-								</p:selectOneMenu>
-								<h:outputLabel />
-								<p:commandButton value="Salvar" id="salvar-button"
-									action="#{cadastroCidadeBean.salvar}" process="cidade-dialog"
-									update="msgs-dialog painel-dialog"
-									oncomplete="if (!args.validationFailed) PF('edicaoCidadeDialog').hide()" />
+							<p:outputLabel value="Nome" for="nome" />
+							<p:inputText id="nome" size="20" maxlength="50"
+								value="#{cadastroCidadeBean.cidadeEdicao.nome}"
+								styleClass="form-control" />
 
-							</p:panelGrid>
-						</div>
+							<p:outputLabel value="Estado:"  />
+							<p:selectOneMenu filter="true"
+								value="#{cadastroCidadeBean.cidadeEdicao.estado}"
+								 required="true" 
+								requiredMessage="O Campo Estado é obrigatório" id="estado">
+								<f:selectItem noSelectionOption="true"
+									itemLabel="Selecione um estado" />
+								<f:selectItems value="#{cadastroCidadeBean.todosEstados}"
+									var="estado" itemValue="#{estado}"
+									itemLabel="#{estado.nome} - #{estado.sigla}" />
+							</p:selectOneMenu>
+							<h:outputLabel />
+							<p:commandButton value="Salvar" id="salvar-button"
+								action="#{cadastroCidadeBean.salvar}" process="cidade-dialog"
+								update="msgs-dialog painel-dialog"
+								oncomplete="if (!args.validationFailed) PF('edicaoCidadeDialog').hide()" />
+
+						</p:panelGrid>
 					</h:form>
 				</p:dialog>
 			</div>

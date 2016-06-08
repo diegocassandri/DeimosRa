@@ -3,61 +3,55 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:b="http://butterfaces.org/components"
-	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui">
+	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui"
+	xmlns:o="http://omnifaces.org/ui">
 
 	<f:metadata>
 		<f:viewAction action="#{cadastroEstadoBean.consultar}" />
 	</f:metadata>
 
-	<ui:define name="titulo">Cadastro de Estado</ui:define>
+	<ui:define name="titulo">Consulta de Estado</ui:define>
 
 	<ui:define name="corpo">
 		<div id="page-wrapper">
-			<div class="container-fluid">
+			<div class="container-fluid" style="min-height: 590px">
 				<!-- Page Heading -->
 				<div class="row">
 					<div class="col-lg-12">
 						<h1 class="page-header">
-							Cadastro <small>Estado </small>
+							Consulta <small>Estado </small>
 						</h1>
 						<ol class="breadcrumb">
 							<li><i class="fa fa-dashboard"></i> <a
 								href="/System/Home.xhtml">Dashboard</a></li>
-							<li class="active"><i class="fa fa-file"></i> Cadastro de
+							<li class="active"><i class="fa fa-file"></i> Consulta de
 								Estado</li>
 						</ol>
 					</div>
 				</div>
-				<!--  <p:panel header="Cadastro de Estados"> -->
-				<h:form id="frmCadastro">
-					<p:panel header="Cadastro de Estados">
-						<p:messages id="msgs" />
 
+				<h:form id="frmCadastro">
+					<p:panel header="">
+						<p:messages id="msgs" />
 						<p:toolbar id="toolbar">
 							<f:facet name="left">
-								<p:commandButton value="Novo" icon="ui-icon-document"
-									action="#{cadastroEstadoBean.prepararNovoCadastro}"
+								<p:button value="Novo" icon="ui-icon-document"
+									outcome="/cadastros/estado/create.xhtml"
 									process="@this" update="estado-dialog"
 									oncomplete="PF('edicaoEstadoDialog').show()" title="Novo">
-									<p:resetInput target="estado-dialog" />
-								</p:commandButton>
+								</p:button>
 
 								<span class="ui-separator"> <span
 									class="ui-icon ui-icon-grip-dotted-vertical" />
 								</span>
 
-								<p:commandButton icon="ui-icon-pencil" title="Editar"
-									process="@this" update="estado-dialog"
-									oncomplete="PF('edicaoEstadoDialog').show()"
+								<p:button icon="ui-icon-pencil" title="Editar"
+									process="@this" outcome="/cadastros/estado/create.xhtml"
 									disabled="#{cadastroEstadoBean.estadoSelecionado == null}">
-									<p:resetInput target="estado-dialog" />
-
-									<f:setPropertyActionListener
-										value="#{cadastroEstadoBean.estadoSelecionado}"
-										target="#{cadastroEstadoBean.estadoEdicao}" />
-								</p:commandButton>
-
+									<f:param name="codigo" value="#{cadastroEstadoBean.estadoSelecionado.codigo}" />
+								</p:button>
+								
+							
 								<p:commandButton icon="ui-icon-trash" title="Excluir"
 									process="@this" update="estado-table msgs toolbar"
 									action="#{cadastroEstadoBean.excluir}"
@@ -104,42 +98,8 @@
 							<p:commandButton value="Não" styleClass="ui-confirmdialog-no"
 								type="button" icon="ui-icon-close" />
 						</p:confirmDialog>
-
-						<p:dialog header="Cadastro Estado" widgetVar="edicaoEstadoDialog"
-							id="estado-dialog" resizable="false" modal="true"
-							closeOnEscape="true">
-
-							<p:messages id="msgs-dialog" />
-							<div class="ui-fluid">
-								<p:defaultCommand target="salvar-button" scope="estado-dialog" />
-
-								<p:panelGrid columns="2"
-									columnClasses="ui-grid-col-4,ui-grid-col-12" layout="grid"
-									styleClass="ui-panelgrid-blank" id="painel-dialog">
-									<p:outputLabel value="Código" for="codigo" />
-									<p:inputText id="codigo" size="7" maxlength="10"
-										value="#{cadastroEstadoBean.estadoEdicao.codigo}"
-										readonly="true" />
-
-									<p:outputLabel value="Nome" for="nome" />
-									<p:inputText id="nome" size="30" maxlength="50"
-										value="#{cadastroEstadoBean.estadoEdicao.nome}" />
-
-									<p:outputLabel value="Sigla" for="sigla" />
-									<p:inputText id="sigla" size="7" maxlength="2"
-										value="#{cadastroEstadoBean.estadoEdicao.sigla}" />
-
-									<h:outputLabel />
-									<p:commandButton value="Salvar" id="salvar-button"
-										action="#{cadastroEstadoBean.salvar}" process="estado-dialog"
-										update="msgs-dialog painel-dialog"
-										oncomplete="if (!args.validationFailed) PF('edicaoEstadoDialog').hide()" />
-								</p:panelGrid>
-							</div>
-						</p:dialog>
 					</p:panel>
 				</h:form>
-
 			</div>
 		</div>
 	</ui:define>

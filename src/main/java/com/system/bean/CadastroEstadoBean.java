@@ -4,7 +4,7 @@ package com.system.bean;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Locale;
+
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -47,17 +47,17 @@ public class CadastroEstadoBean implements Serializable {
 	
 	@PostConstruct
 	public void prepararNovoCadastro() {
-		estadoEdicao = new Estado();
+		if(estadoEdicao == null){
+			estadoEdicao = new Estado();
+		}
+		
 	}
 
 	public void salvar() {
 		try {
 			this.cadastroEstado.salvar(estadoEdicao);
-			estadoEdicao = new Estado();
-			consultar();
 			messages.info("Estado salvo com sucesso!");
 			RequestContext.getCurrentInstance().update(Arrays.asList("frmCadastro:msgs", "frmCadastro:estado-table"));
-			prepararNovoCadastro();
 
 		} catch (Exception e) {
 			FacesMessage mensagem = new FacesMessage(e.getMessage());
@@ -71,12 +71,9 @@ public class CadastroEstadoBean implements Serializable {
 
 	public void excluir() {
 		try {
-			System.out.println("exlcuir");
 			this.cadastroEstado.excluir(estadoSelecionado);
 			estadoSelecionado = null;
-
 			consultar();
-
 			messages.info("Estado excluído com sucesso!");
 		} catch (Exception e) {
 			FacesMessage mensagem = new FacesMessage(e.getMessage());
@@ -87,12 +84,9 @@ public class CadastroEstadoBean implements Serializable {
 	
 	public void excluir(Estado estado) {
 		try {
-			System.out.println("exlcuir");
 			this.cadastroEstado.excluir(estado);
 			estadoSelecionado = null;
-
 			consultar();
-
 			messages.info("Estado excluído com sucesso!");
 		} catch (Exception e) {
 			FacesMessage mensagem = new FacesMessage(e.getMessage());
@@ -112,19 +106,6 @@ public class CadastroEstadoBean implements Serializable {
 		estadoEdicao = estado;
 	}
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public boolean filterByPrice(Object value, Object filter, Locale locale) {
-		String filterText = (filter == null) ? null : filter.toString().trim();
-		if (filterText == null || filterText.equals("")) {
-			return true;
-		}
-
-		if (value == null) {
-			return false;
-		}
-
-		return ((Comparable) value).compareTo(Integer.valueOf(filterText)) > 0;
-	}
 
 	public Estado getEstadoEdicao() {
 		return estadoEdicao;
@@ -157,11 +138,5 @@ public class CadastroEstadoBean implements Serializable {
 	public void setFiltroEstados(List<Estado> filtroEstados) {
 		this.filtroEstados = filtroEstados;
 	}
-	
-	
-
-	
-	
-	
 
 }

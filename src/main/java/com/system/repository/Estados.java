@@ -5,9 +5,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
-
-
 import com.system.model.Estado;
 
 public class Estados implements Serializable{
@@ -36,6 +35,17 @@ public class Estados implements Serializable{
 	
 	public void excluir(Estado estado) {
 		this.manager.remove(estado);
+	}
+	
+	public boolean pesquisaPorNome(Estado estado) {
+		Query query = manager.createQuery("From Estado where nome = :nome", Estado.class);
+		query.setParameter("nome", estado.getNome());
+		List<?> resultList = query.getResultList();
+		if (resultList.isEmpty()) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 	
 	public List<Estado> porNomeSemelhante(String nome) {

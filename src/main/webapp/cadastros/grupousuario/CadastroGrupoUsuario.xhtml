@@ -126,18 +126,20 @@
 							<p:messages id="msgs-dialog" />
 
 							<p:defaultCommand target="salvar-button" scope="grupo-dialog" />
-							<h:panelGrid columns="2" id="painel-dialog">
+							<p:panelGrid columns="2"
+							columnClasses="ui-grid-col-4,ui-grid-col-8" layout="grid"
+							styleClass="ui-panelgrid-blank" id="painel-dialog">
 								<p:outputLabel value="Código" for="codigo" />
-								<p:inputText id="codigo" size="5" maxlength="20"
+								<p:inputText id="codigo" size="5" maxlength="20" styleClass="form-control input-md"
 									value="#{cadastroGrupoBean.grupoEdicao.codigo}" readonly="true" />
 								<p:outputLabel value="Nome" for="nome" />
-								<p:inputText id="nome" required="true"
+								<p:inputText id="nome" required="true" styleClass="form-control input-md"
 									value="#{cadastroGrupoBean.grupoEdicao.nome}" />
 								<p:commandButton value="Salvar" id="salvar-button"
 									action="#{cadastroGrupoBean.salvar}" process="grupo-dialog"
 									update="msgs-dialog painel-dialog"
 									oncomplete="if (!args.validationFailed) PF('edicaoGrupoDialog').hide()" />
-							</h:panelGrid>
+							</p:panelGrid>
 						</p:dialog>
 
 						<p:dialog header="Associar usuários"

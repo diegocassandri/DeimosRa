@@ -40,7 +40,6 @@ public class CadastroLancamentoBean implements Serializable {
 		
 		this.todasPessoas = this.pessoas.todas();
 		if (this.lancamento == null) {
-			System.out.println("Entrou");
 			this.lancamento = new Lancamento();
 			
 		}
